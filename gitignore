@@ -1,0 +1,17 @@
+# Variables de entorno (NUNCA subir a GitHub)
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo

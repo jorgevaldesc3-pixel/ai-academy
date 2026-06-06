@@ -229,6 +229,13 @@ button:active{transform:scale(.97)}
 }
 </style>
 </head>
+<script src="setup-local.js"></script>
+<script>
+// Cargar API Key de localStorage (se configura en Vercel o .env)
+// En desarrollo local: guarda en localStorage('NOTION_API_KEY')
+// En Vercel: las variables de entorno se inyectan automáticamente
+window.NOTION_API_KEY = localStorage.getItem('NOTION_API_KEY') || '';
+</script>
 <body>
 
 <!-- LOGIN -->
@@ -472,7 +479,7 @@ const CHIP_SM = `<svg viewBox="0 0 90 105" width="46" height="46" xmlns="http://
 </svg>`;
 
 /* ── NOTION API CONFIG ────────────────────────────────── */
-const NOTION_API_KEY = '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';
+const NOTION_API_KEY = window.NOTION_API_KEY || '';
 const NOTION_DATABASE_ID = 'ba5bca85b148420b8005b7a2f5259080';
 const NOTION_API_ENDPOINT = 'https://api.notion.com/v1/pages';
 

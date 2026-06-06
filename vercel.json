@@ -1,0 +1,7 @@
+{
+  "buildCommand": "echo 'Static site - no build needed'",
+  "outputDirectory": ".",
+  "env": {
+    "NOTION_API_KEY": "@notion_api_key"
+  }
+}

@@ -1,0 +1,5 @@
+# Notion API Key
+# IMPORTANTE: Esta clave se usa en desarrollo local SOLAMENTE
+# En Vercel, se configura en Dashboard → Settings → Environment Variables
+# NO COMPARTAS ESTA CLAVE PÚBLICAMENTE
+NOTION_API_KEY=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
