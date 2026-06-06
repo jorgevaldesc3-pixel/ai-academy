@@ -661,13 +661,201 @@ const MODULES = [
   {id:2, emoji:"🔬", title:"¿Cómo piensa la IA?", district:"Laboratorio Central",
    tagline:"El secreto de cómo aprenden las máquinas",
    accent:"#2563EB", accentLight:"#60A5FA", glow:"rgba(37,99,235,.5)",
-   bg:"linear-gradient(160deg,#1E3A5F,#1E40AF,#1D4ED8)",
-   comingSoon:true, dialogues:[], content:[], tfActivity:{items:[]}, ddActivity:{items:[]}, quiz:[]},
+   bg:"linear-gradient(135deg,#E0E9FF,#F5F7FA)",
+   dialogues:[
+      "¡Hola de nuevo! 🐾 Soy CHIP. Hoy entraremos al Laboratorio Central.",
+      "Descubrirás cómo realmente piensan las máquinas: con redes neuronales, datos y matemática.",
+      "No hay fórmulas complicadas aquí. Solo ideas increíbles explicadas de forma simple.",
+      "¿Listo para ver el cerebro de la IA? ¡Vamos! 🧠⚡"
+   ],
+    content:[
+      {icon:"🧠", title:"Las Redes Neuronales",
+       text:"Imagina que tu cerebro está hecho de millones de conexiones eléctricas entre neuronas. Cuando aprendes algo nuevo, esas conexiones se fortalecen o se debilitan según lo que experimentas. Las redes neuronales artificiales copian esta idea: son millones de conexiones matemáticas organizadas en capas. Cada conexión tiene un 'peso', un número que dice cuánta importancia tiene. Cuando la IA procesa información (como una imagen), esa información viaja a través de todas esas capas, y cada capa amplifica o reduce señales según sus pesos. El resultado: la IA reconoce patrones que los humanos podrían no ver."},
+      {icon:"📚", title:"Aprendizaje Supervisado",
+       text:"Cuando eras niño, alguien te señalaba objetos y te decía sus nombres: 'esto es un gato, esto es un perro'. Eso es aprendizaje supervisado. La IA aprende exactamente así: mostrándole miles de imágenes de gatos etiquetadas como 'gato' y miles de imágenes de perros etiquetadas como 'perro'. Después de ver estos ejemplos, el sistema puede reconocer un gato nuevo que nunca vio antes. El 'supervisor' (el humano) proporciona las respuestas correctas de antemano. Por eso se llama 'supervisado', alguien está supervisando cada ejemplo, verificando que la etiqueta sea correcta."},
+      {icon:"💾", title:"De Dónde Vienen los Datos",
+       text:"Si la IA aprende de ejemplos, ¿de dónde saca esos ejemplos? De bases de datos enormes recopiladas por científicos. ImageNet es famosa: contiene más de 14 millones de imágenes de objetos, todas etiquetadas. Cada imagen fue revisada por personas para asegurar que la etiqueta fuera correcta. Esto tomó años. Otros ejemplos: CIFAR-10 (60,000 imágenes de objetos cotidianos), MNIST (70,000 imágenes de números escritos a mano). Estos datos vienen de diferentes fuentes: fotos de internet, videos, libros digitalizados, encuestas, incluso redes sociales. Los datos que usamos para entrenar IA son el combustible que hace que todo funcione."},
+      {icon:"💬", title:"Procesamiento Natural del Lenguaje",
+       text:"Cuando le hablas a Siri o a Alexa, o usas Google Translate, estás usando Procesamiento Natural del Lenguaje (PNL). Es un área especial de la IA que enseña a las computadoras a entender el lenguaje humano, tanto texto como voz. ¿Cómo lo hace? En pasos: Primero, divide el texto en palabras. Luego, identifica partes del discurso. Después, busca el significado analizando el contexto. Por ejemplo, 'banco' puede ser un lugar donde guardan dinero o un asiento. El contexto te dice cuál es. Finalmente, genera una respuesta en lenguaje natural que tiene sentido."},
+      {icon:"🔄", title:"El Ciclo Completo",
+       text:"Aquí está el proceso completo cuando la IA aprende: (1) Recopilación: Científicos recopilan millones de ejemplos etiquetados. (2) Preparación: Limpian los datos, aseguran que las etiquetas sean correctas. (3) Entrenamiento: La IA ve cada ejemplo, predice una respuesta, comprueba si es correcta. Si se equivoca, ajusta sus 'pesos' para mejorar. Esto sucede millones de veces. (4) Validación: Prueban el modelo con datos nuevos que nunca vio para verificar que realmente aprendió. (5) Despliegue: Si funciona bien, se libera al mundo (como una app). Sin datos de calidad, nada de esto funciona."}
+    ],
+    tfActivity:{items:[
+      {stmt:"Las redes neuronales son exactamente como el cerebro humano", ans:false,
+       hint:"¿Funcionan exactamente igual o solo se inspiran en el cerebro?",
+       ok:"¡Correcto! Se inspiran en el cerebro, pero no funcionan exactamente igual.",
+       bad:"Las redes neuronales se inspiran en el cerebro, pero no son lo mismo."},
+      {stmt:"La IA necesita millones de ejemplos para aprender bien", ans:true,
+       hint:"Recuerda: ¿cuántos ejemplos necesitaba la IA en M1?",
+       ok:"¡Exacto! La IA necesita muchísimos ejemplos para reconocer patrones.",
+       bad:"Verdad. La IA requiere muchos datos para entrenar bien."},
+      {stmt:"En aprendizaje supervisado, un humano supervisa cada ejemplo", ans:true,
+       hint:"¿Quién pone las etiquetas en los datos de entrenamiento?",
+       ok:"¡Sí! Las personas etiquetan manualmente los datos para entrenar la IA.",
+       bad:"Sí, alguien necesita verificar que las etiquetas sean correctas."},
+      {stmt:"ImageNet tiene más de 14 millones de imágenes etiquetadas", ans:true,
+       hint:"¿Cómo crees que los científicos entrenaron sistemas de reconocimiento facial?",
+       ok:"¡Correcto! ImageNet fue fundamental para entrenar sistemas modernos.",
+       bad:"Verdad. ImageNet es uno de los mayores conjuntos de datos de imágenes."},
+      {stmt:"Una red neuronal entiende el significado de las imágenes como tú", ans:false,
+       hint:"¿Realmente 'entiende' la IA, o solo reconoce patrones numéricos?",
+       ok:"¡Exacto! Solo reconoce patrones matemáticos, no 'entiende' como tú.",
+       bad:"La IA solo manipula números, no 'entiende' el significado real."},
+      {stmt:"Google Translate usa Procesamiento Natural del Lenguaje (PNL)", ans:true,
+       hint:"¿Cómo crees que Google detecta el contexto de las palabras?",
+       ok:"¡Sí! Google Translate usa PNL para traducir considerando el contexto.",
+       bad:"Verdad. Google Translate utiliza técnicas de PNL."},
+      {stmt:"El primer paso para entrenar IA es validar los datos", ans:false,
+       hint:"¿Qué haces primero: recopilar datos o validar datos?",
+       ok:"¡Correcto! Primero recopila datos, después los prepara y entrena.",
+       bad:"No. Primero debes recopilar y preparar los datos, luego entrenar."},
+      {stmt:"Después de entrenar una IA, se prueba con datos nuevos", ans:true,
+       hint:"¿Cómo sabes si la IA realmente aprendió o solo memorizó?",
+       ok:"¡Exacto! Pruebas con datos nuevos para verificar que aprendió bien.",
+       bad:"Verdad. La validación es crucial para verificar que funciona."},
+      {stmt:"La IA puede crear patrones completamente nuevos sin datos de entrenamiento", ans:false,
+       hint:"¿De dónde saca la IA su conocimiento para predecir cosas nuevas?",
+       ok:"¡Correcto! Solo puede recombinar patrones que ya vio en los datos.",
+       bad:"No. La IA solo recombina patrones de datos que vio antes."},
+      {stmt:"Todos los datos de entrenamiento de IA son perfectos y correctos", ans:false,
+       hint:"¿Crees que millones de ejemplos etiquetados por humanos son 100% perfectos?",
+       ok:"¡Exacto! Los datos tienen errores y sesgos que pueden afectar la IA.",
+       bad:"No. Los datos siempre tienen errores y pueden contener sesgos."}
+    ]},
+    ddActivity:{items:[
+      {id:"rn",       label:"🧠 Red Neuronal",       cat:"ia"},
+      {id:"tabla",    label:"📊 Tabla Excel",        cat:"no"},
+      {id:"cnn",      label:"🖼️ Red Convolucional", cat:"ia"},
+      {id:"libro",    label:"📚 Libro de Biología",  cat:"no"},
+      {id:"lstm",     label:"⏰ LSTM",               cat:"ia"},
+      {id:"papel",    label:"📄 Papel y Lápiz",      cat:"no"}
+    ]},
+    quiz:[
+      {q:"¿Qué es una red neuronal artificial?",
+       opts:["Un sistema que copia el cerebro humano exactamente","Un sistema de conexiones matemáticas que reconoce patrones","Una computadora muy antigua","Un tipo de robot inteligente"],
+       ans:1, why:"Una red neuronal artificial se inspira en el cerebro, pero es un sistema de matemáticas que reconoce patrones en datos."},
+      {q:"¿Cuál es el primer paso para entrenar una IA?",
+       opts:["Validar con datos nuevos","Recopilar y etiquetar millones de ejemplos","Crear una máquina física","Escribir el código perfecto"],
+       ans:1, why:"El primer paso es recopilar datos. Sin buenos datos, todo lo demás falla."},
+      {q:"En aprendizaje supervisado, ¿quién proporciona las respuestas correctas?",
+       opts:["La computadora sola","Los humanos etiquetando los datos","La Internet automáticamente","Nadie, la IA aprende sola"],
+       ans:1, why:"Los humanos etiquetan manualmente los datos para que la IA aprenda qué es correcto."},
+      {q:"¿Verdadero o Falso? ImageNet tiene más de 10 millones de imágenes etiquetadas",
+       opts:["Verdadero","Falso"],
+       ans:0, why:"Verdadero. ImageNet tiene más de 14 millones de imágenes cuidadosamente etiquetadas."},
+      {q:"¿Para qué se valida una IA con datos nuevos que nunca vio?",
+       opts:["Para divertirse","Para verificar que realmente aprendió, no solo memorizó","Para deletrearla","Para nada especial"],
+       ans:1, why:"La validación verifica que la IA puede generalizar a datos nuevos, no solo memorizar datos viejos."},
+      {q:"¿Qué es el Procesamiento Natural del Lenguaje (PNL)?",
+       opts:["Un idioma de computadora","El área de IA que enseña a computadoras a entender lenguaje humano","Un tipo de calculadora","Un robot que habla"],
+       ans:1, why:"PNL es un área de la IA que enseña a máquinas a entender texto y voz humana."},
+      {q:"¿Verdadero o Falso? Las redes neuronales entienden el significado como los humanos",
+       opts:["Verdadero","Falso"],
+       ans:1, why:"Falso. Las redes neuronales solo manipulan números y reconocen patrones, no 'entienden' significado."},
+      {q:"¿Qué falta siempre en los datos de entrenamiento?",
+       opts:["Nada, son perfectos","Errores, sesgos y datos incompletos","Colores brillantes","Música de fondo"],
+       ans:1, why:"Todos los datos tienen errores, sesgos y pueden estar incompletos. Esto afecta cómo aprende la IA."}
+    ]
+  },
   {id:3, emoji:"🛡️", title:"Cuidados y Peligros", district:"Torre de Seguridad",
    tagline:"Usa la IA de forma segura y responsable",
    accent:"#DC2626", accentLight:"#F87171", glow:"rgba(220,38,38,.5)",
-   bg:"linear-gradient(160deg,#450A0A,#991B1B,#DC2626)",
-   comingSoon:true, dialogues:[], content:[], tfActivity:{items:[]}, ddActivity:{items:[]}, quiz:[]}
+   bg:"linear-gradient(135deg,#FEE2E2,#FDF2F2)",
+   dialogues:[
+      "¡Última parada! 🛡️ Bienvenido a la Torre de Seguridad.",
+      "Aquí no vamos a asustarte. Vamos a empoderarte con conocimiento.",
+      "Aprenderás a usar la IA de forma inteligente, protegiendo lo que es importante.",
+      "¡El poder está en ti! Vamos a aprender juntos. 🚀"
+   ],
+    content:[
+      {icon:"🔒", title:"La Privacidad de Tus Datos",
+       text:"Cada vez que usas una app, navegas por internet o hablas con una IA, dejas datos. Fotos, ubicación, qué música te gusta, lo que buscas, las cosas que compras. Todo esto es información tuya que vale mucho. Las IA necesitan datos para aprender, pero esos datos pueden tener secretos tuyos. El problema: los datos que se usan para entrenar la IA se guardan en computadoras llamadas servidores. Si alguien hackea un servidor o si no protegen bien la privacidad, tu información personal puede salir a la luz. Por eso es muy importante entender qué información das cuando usas cualquier tecnología."},
+      {icon:"🧠", title:"La IA no es Humano y no Tiene Criterio",
+       text:"Aquí está la verdad fundamental: la IA no piensa. No tiene consciencia. No toma decisiones basadas en sabiduría, ética o sentido común como lo hace un humano. ¿Qué hace realmente? Busca patrones en números. Cuando una IA dice algo inteligente, solo está completando un patrón que aprendió de millones de textos. Es matemática muy rápida disfrazada de inteligencia. Los humanos tenemos criterio: podemos entender una situación, considerar valores morales, pensar en cómo nuestras acciones afectan a otros. La IA no puede hacer eso. No comprende el mundo. Solo reconoce coincidencias en datos y predice cuál es la respuesta más probable."},
+      {icon:"📊", title:"La IA es Pura Matemática",
+       text:"Detrás de cada respuesta que da una IA hay cálculos matemáticos enormes, pero cero comprensión real. Cuando ChatGPT escribe un poema, no está inspirado ni entiende la emoción. Está calculando qué palabra viene después según millones de combinaciones que aprendió. Cuando una IA de reconocimiento facial te identifica, no está 'entendiéndote'. Está comparando números (datos de píxeles) con otros números en su base de datos. La diferencia entre esto y tu razonamiento es enorme. Tú puedes entender por qué algo es moralmente incorrecto, por qué una broma es ofensiva, por qué debería confiar en alguien. La IA no entiende nada de eso. Solo manipula símbolos y números."},
+      {icon:"⚖️", title:"La Decisión Final Siempre es Tuya",
+       text:"Aunque la IA te recomiende algo, aunque suene convincente, aunque parezca que está en lo correcto, la responsabilidad final es TUYA. Esto es importante. Si la IA te dice que no hagas algo y tú lo haces de todas formas, y sale mal, ¿quién es responsable? Tú. Si la IA te recomienda que hagas algo, y obedeces ciegamente, y sale mal, ¿quién es responsable? Ambos, pero tú eres quien actuó. Los sistemas responsables de IA (como los que aprueban préstamos bancarios o recomendaciones médicas) siempre dejan a un humano en medio. Alguien revisa lo que la IA sugiere, aplica su propio criterio, y luego toma la decisión."},
+      {icon:"🚀", title:"Potencia tu Criterio",
+       text:"La pregunta correcta no es 'qué dice la IA' sino 'cómo puedo usar la IA para mejorar mi propio pensamiento'. La IA es una herramienta. Un microscopio no ve por ti; te ayuda a ver mejor. Una calculadora no piensa por ti; te libera de cálculos mecánicos para que pienses en lo que significan los números. La IA debería funcionar igual. Puedes usarla para recopilar información, explorar perspectivas diferentes, encontrar errores en tu lógica, imaginar consecuencias. Pero la conclusión final debe ser tuya. Si usas la IA para reemplazar tu pensamiento, te estás entregando el control de tu vida a un sistema que no entiende absolutamente nada sobre lo que es importante para ti."}
+    ],
+    tfActivity:{items:[
+      {stmt:"Cada vez que usas una app, esa app guarda información sobre ti", ans:true,
+       hint:"¿Crees que tus datos simplemente desaparecen?",
+       ok:"¡Exacto! Las apps guardan tus datos constantemente.",
+       bad:"Verdad. Las apps recopilan datos sobre qué haces."},
+      {stmt:"La IA puede tener sentimientos y cambiar de opinión", ans:false,
+       hint:"¿Realmente la IA siente o solo sigue patrones matemáticos?",
+       ok:"¡Correcto! La IA no tiene sentimientos, solo sigue patrones matemáticos.",
+       bad:"La IA no tiene sentimientos reales, solo simula respuestas."},
+      {stmt:"Detrás de cada respuesta de IA hay matemática pura, no comprensión", ans:true,
+       hint:"¿La IA realmente 'entiende' o solo manipula símbolos?",
+       ok:"¡Sí! Es matemática muy rápida, no verdadera comprensión.",
+       bad:"Verdad. La IA es puro cálculo, sin entendimiento real."},
+      {stmt:"Puedo confiar ciegamente en todo lo que dice una IA", ans:false,
+       hint:"¿Debería verificar lo que dice la IA o solo creerle?",
+       ok:"¡Correcto! Siempre debes verificar y pensar críticamente.",
+       bad:"No. Debes siempre cuestionar lo que dice la IA."},
+      {stmt:"Si la IA me recomienda algo, yo sigo siendo responsable de la decisión", ans:true,
+       hint:"¿Quién toma la decisión final: tú o la IA?",
+       ok:"¡Exacto! Tú decides qué hacer, así que tú eres responsable.",
+       bad:"Verdad. La responsabilidad final siempre es tuya."},
+      {stmt:"Es bueno usar la IA para reemplazar completamente mi pensamiento", ans:false,
+       hint:"¿Debería pensar por mí mismo o dejar que la IA piense por mí?",
+       ok:"¡Correcto! Debes usar la IA para potenciar tu criterio, no reemplazarlo.",
+       bad:"No. Debes usar la IA como herramienta, no como reemplazo de tu mente."},
+      {stmt:"Los datos de entrenamiento de IA pueden contener información privada", ans:true,
+       hint:"¿Crees que los servidores pueden ser hackeados?",
+       ok:"¡Sí! Por eso es importante proteger tu privacidad.",
+       bad:"Verdad. Los datos pueden ser robados o filtrados."},
+      {stmt:"Un sistema responsable de IA siempre tiene un humano revisando", ans:true,
+       hint:"¿En sistemas importantes, quién revisa lo que la IA sugiere?",
+       ok:"¡Exacto! Alguien humano debe revisar decisiones importantes.",
+       bad:"Verdad. Los sistemas éticos dejan al humano en el medio."},
+      {stmt:"La IA entiende el contexto moral como los humanos", ans:false,
+       hint:"¿La IA realmente entiende qué es moralmente correcto?",
+       ok:"¡Correcto! La IA no comprende moralidad, solo patrones.",
+       bad:"No. La IA no entiende ética ni moralidad."},
+      {stmt:"Tengo el poder de decidir si confiar o no en lo que dice la IA", ans:true,
+       hint:"¿Quién tiene el control final sobre tus decisiones?",
+       ok:"¡Exacto! El poder está siempre en ti, en tu criterio.",
+       bad:"Verdad. Tú tienes el poder de decidir qué hacer con la información de la IA."}
+    ]},
+    ddActivity:{items:[
+      {id:"priv",      label:"🔒 Guardar contraseña en navegador",       cat:"cuidado"},
+      {id:"ubicacion", label:"📍 Compartir ubicación con amigo",         cat:"cuidado"},
+      {id:"malware",   label:"💀 Hacer clic en links sospechosos",       cat:"peligro"},
+      {id:"verif",     label:"✅ Verificar información antes de creerla", cat:"cuidado"},
+      {id:"copia",     label:"📋 Copiar tarea de IA sin revisar",        cat:"peligro"},
+      {id:"aprender",  label:"🧠 Usar IA para aprender cosas nuevas",    cat:"cuidado"}
+    ]},
+    quiz:[
+      {q:"¿Qué pasa con tus datos cuando usas una app?",
+       opts:["Desaparecen para siempre","Se guardan en servidores de la empresa","Se convierten en dinero","Se tiran a la basura"],
+       ans:1, why:"Tus datos se guardan en servidores. Por eso es importante saber qué apps tienen acceso a tu información."},
+      {q:"¿Cuál es el principal problema de confiar ciegamente en la IA?",
+       opts:["Que la IA es muy lenta","Que pierdes tu capacidad de pensar críticamente","Que cuesta dinero","Que la IA se enoja"],
+       ans:1, why:"Si dejas que la IA piense por ti, pierdes tu propia capacidad de reflexionar y decidir."},
+      {q:"¿Verdadero o Falso? La IA tiene consciencia y puede sentir emociones",
+       opts:["Verdadero","Falso"],
+       ans:1, why:"Falso. La IA es matemática pura sin consciencia ni sentimientos."},
+      {q:"¿Quién es responsable si la IA te recomienda algo malo y tú lo haces?",
+       opts:["Solo la IA","Solo tú","Ambos, pero especialmente tú","Nadie"],
+       ans:2, why:"Aunque la IA sugiera algo, tú eres quien decide actuar. La responsabilidad es principalmente tuya."},
+      {q:"¿Cómo deberías usar la IA inteligentemente?",
+       opts:["Confiar ciegamente en todo lo que dice","Usarla para mejorar tu propio pensamiento, no reemplazarlo","Dejar que ella tome todas tus decisiones","Nunca usar IA"],
+       ans:1, why:"La IA es una herramienta. Úsala para explorar, aprender y pensar mejor, pero mantén tu criterio."},
+      {q:"¿Verdadero o Falso? La IA comprende moralidad y ética como los humanos",
+       opts:["Verdadero","Falso"],
+       ans:1, why:"Falso. La IA solo sigue patrones matemáticos, no entiende ética ni moralidad real."},
+      {q:"¿Qué información deberías ser cuidadoso de compartir en internet?",
+       opts:["Nada, internet es completamente seguro","Ubicación, contraseñas y datos personales","Solo fotos de gatos","Tu nombre completo"],
+       ans:1, why:"Debes proteger información sensible: ubicación, contraseñas, números de teléfono, direcciones."},
+      {q:"¿Cuál es el poder más importante que tienes frente a la IA?",
+       opts:["El poder de hackearla","El poder de tomar decisiones finales usando tu criterio","El poder de hacerla enojar","El poder de hacerla desaparecer"],
+       ans:1, why:"Tu poder es tu capacidad de pensar críticamente y tomar decisiones informadas."}
+    ]
+  }
 ];
 
 const LEVELS = [
@@ -872,10 +1060,40 @@ function startDD(){
   const hdr=document.getElementById("ddHeader");
   hdr.style.background=m.accent; hdr.style.boxShadow=`0 4px 20px ${m.glow}`;
   document.getElementById("chipMiniDD").innerHTML=CHIP_SM;
+  
+  // Generar zonas dinámicamente basadas en el módulo
+  const items = m.ddActivity.items;
+  const categories = [...new Set(items.map(it => it.cat))];
+  const zonesContainer = document.querySelector(".dd-zones");
+  zonesContainer.innerHTML = "";
+  
+  // Labels para cada categoría según el módulo
+  const categoryLabels = {
+    "ia": "🤖 USA IA",
+    "no": "📺 NO USA IA",
+    "yes": "✅ ES RED NEURONAL",
+    "cuidado": "✅ CUIDADO",
+    "peligro": "⚠️ PELIGRO"
+  };
+  
+  categories.forEach(cat => {
+    const zone = document.createElement("div");
+    zone.className = "dd-zone";
+    zone.id = `zone-${cat}`;
+    zone.onclick = () => placeInZone(cat);
+    zone.innerHTML = `
+      <div class="dd-zone-title">${categoryLabels[cat] || cat}</div>
+      <div class="dd-placed" id="placed-${cat}"></div>
+    `;
+    zonesContainer.appendChild(zone);
+  });
+  
   renderDD(); setView("dd-view");
 }
 function renderDD(){
   const m=activeMod(); const items=m.ddActivity.items;
+  // Obtener las categorías únicas
+  const categories = [...new Set(items.map(it => it.cat))];
   const pool=document.getElementById("dd-pool");
   pool.innerHTML=`<div class="dd-pool-label">Toca para seleccionar</div>`;
   items.filter(it=>!S.ddPlaced[it.id]).forEach(it=>{
@@ -883,12 +1101,15 @@ function renderDD(){
     el.className=`dd-item${S.ddSel===it.id?" selected":""}`;
     el.textContent=it.label; el.onclick=()=>selectDD(it.id); pool.appendChild(el);
   });
-  ["ia","no"].forEach(z=>{
-    const cont=document.getElementById(`placed-${z}`); cont.innerHTML="";
-    items.filter(it=>S.ddPlaced[it.id]===z).forEach(it=>{
-      const el=document.createElement("div");
-      el.className=`dd-item placed-${z}`; el.textContent=it.label; el.onclick=()=>returnToPool(it.id); cont.appendChild(el);
-    });
+  categories.forEach(z=>{
+    const cont=document.getElementById(`placed-${z}`); 
+    if(cont) {
+      cont.innerHTML="";
+      items.filter(it=>S.ddPlaced[it.id]===z).forEach(it=>{
+        const el=document.createElement("div");
+        el.className=`dd-item placed-${z}`; el.textContent=it.label; el.onclick=()=>returnToPool(it.id); cont.appendChild(el);
+      });
+    }
   });
   const allPlaced=items.every(it=>S.ddPlaced[it.id]);
   document.getElementById("verifyBtn").classList.toggle("hidden",!allPlaced||S.ddVerified);
