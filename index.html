@@ -488,19 +488,14 @@ async function saveToNotion(moduleId, data) {
     console.warn('⚠️ Usuario no configurado');
     return false;
   }
-  
-  if (!window.NOTION_API_KEY) {
-    console.warn('⚠️ API Key no está configurada. Revisa config.js');
-    return false;
-  }
-  
+
   const studentId = `${S.userName}_${S.userClass}`;
   const moduleNames = {1: 'M1: ¿Qué es la IA?', 2: 'M2: ¿Cómo piensa la IA?', 3: 'M3: Cuidados y Peligros'};
   
-  console.log('🔄 Enviando a Notion:', {studentId, moduleId, apiKeyLength: window.NOTION_API_KEY.length});
+  console.log('🔄 Enviando a Notion a través de Vercel Function:', {studentId, moduleId});
   
   const payload = {
-    parent: { database_id: NOTION_DATABASE_ID },
+    parent: { database_id: window.NOTION_DATABASE_ID },
     properties: {
       'Estudiante ID': { title: [{ text: { content: studentId } }] },
       'Módulo': { select: { name: moduleNames[moduleId] } },
@@ -518,30 +513,30 @@ async function saveToNotion(moduleId, data) {
   };
 
   try {
-    console.log('📤 Payload:', JSON.stringify(payload, null, 2));
+    console.log('📤 Enviando payload...');
     
-    const response = await fetch(NOTION_API_ENDPOINT, {
+    // Llamar a la función serverless de Vercel (sin CORS)
+    const response = await fetch('/api/saveToNotion', {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${window.NOTION_API_KEY}`,
-        'Notion-Version': '2022-06-28',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(payload)
+      body: JSON.stringify({ payload })
     });
-    
-    console.log('📊 Notion Response Status:', response.status);
-    
+
+    console.log('📊 Response Status:', response.status);
+
     if (response.ok) {
-      console.log('✅ Datos guardados en Notion');
+      const result = await response.json();
+      console.log('✅ Datos guardados en Notion:', result.pageId);
       return true;
     } else {
-      const errorText = await response.text();
-      console.warn('⚠️ Error Notion:', response.status, errorText);
+      const errorData = await response.json();
+      console.warn('⚠️ Error Vercel Function:', response.status, errorData);
       return false;
     }
   } catch (err) {
-    console.warn('⚠️ Error conexión Notion:', err);
+    console.warn('⚠️ Error conexión:', err.message);
     return false;
   }
 }
