@@ -229,12 +229,15 @@ button:active{transform:scale(.97)}
 }
 </style>
 </head>
-<script src="setup-local.js"></script>
+<script src="config.js"></script>
 <script>
-// Cargar API Key de localStorage (se configura en Vercel o .env)
-// En desarrollo local: guarda en localStorage('NOTION_API_KEY')
-// En Vercel: las variables de entorno se inyectan automáticamente
-window.NOTION_API_KEY = localStorage.getItem('NOTION_API_KEY') || '';
+// Si config.js no cargó la API Key, intenta desde localStorage
+if (!window.NOTION_API_KEY) {
+  window.NOTION_API_KEY = localStorage.getItem('NOTION_API_KEY') || '';
+}
+if (!window.NOTION_DATABASE_ID) {
+  window.NOTION_DATABASE_ID = 'ba5bca85b148420b8005b7a2f5259080';
+}
 </script>
 <body>
 
